@@ -36,3 +36,7 @@ pip-log.txt
 .idea
 
 *.log
+
+settings.py
+
+
