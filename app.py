@@ -13,8 +13,8 @@ from instagram import photos_with_location
 from settings import GOOGLE_TOKEN
 
 define('environment', default='development', help='Pick you environment', type=str)
-define('site_title', default='Tornado Example', help='Site Title', type=str)
-define('cookie_secret', default='sooooooosecret', help='Your secret cookie dough', type=str)
+define('site_title', default='Instagram map', help='Site Title', type=str)
+define('cookie_secret', default=os.environ.get('SECRET_KEY', 'this_should_be_configured'), help='secret', type=str)
 define('port', default='8000', help='Listening port', type=str)
 
 
