@@ -47,7 +47,7 @@ class Application(tornado.web.Application):
 
 def main():
     tornado.options.parse_command_line()
-    print "Server listening on port " + str(options.port)
+    print("http://127.0.0.1:" + str(options.port))
     logging.getLogger().setLevel(logging.DEBUG)
     http_server = tornado.httpserver.HTTPServer(Application())
     http_server.listen(options.port)
