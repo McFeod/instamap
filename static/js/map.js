@@ -5,6 +5,10 @@ function initMap() {
         zoom: 2,
         center: {lat: 50, lng: 0}
     });
+
+    var markerCluster = new MarkerClusterer(map, [],
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
     var ws = new WebSocket($('#ws_url').html());
     ws.onopen = function () {
         ws.send(JSON.stringify({
@@ -12,12 +16,13 @@ function initMap() {
             count: $('#count').html()
         }))
     };
+
     ws.onmessage = function (evt) {
-         addMarker(map, JSON.parse(evt.data));
+         addMarker(map, JSON.parse(evt.data), markerCluster);
     };
 }
 
-function addMarker(map, pic){
+function addMarker(map, pic, cluster){
     var marker = new google.maps.Marker({
             position: {
                 lat: pic.latitude,
@@ -26,9 +31,10 @@ function addMarker(map, pic){
             map: map,
             icon: {
                 url: pic.preview,
-                scaledSize: new google.maps.Size(32, 32)
+                scaledSize: new google.maps.Size(32, 32),
             }
         });
+    cluster.addMarker(marker);
     marker.addListener('click', function () {
         $('#modal_body').html('<img src="' + pic.image + '" alt="">');
         $('#pic_modal').modal('show');
