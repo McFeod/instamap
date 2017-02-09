@@ -61,7 +61,7 @@ function addMarker(map, pic, cluster){
         showPicture(pic.image);
     });
     loaded++;
-    $('#footer').html(loaded + 'of ' + $('#count').html())
+    $('#footer').html(loaded + ' of ' + $('#count').html())
 
 }
 
