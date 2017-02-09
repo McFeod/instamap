@@ -9,3 +9,12 @@
     width: auto;
     min-width: 300px;
 }
+
+.modal-body, .modal-header{
+    background: #333333;
+}
+
+.close {
+    color: white;
+    opacity: 0.6;
+}

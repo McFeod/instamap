@@ -37,7 +37,9 @@ class TagFormHandler(tornado.web.RequestHandler):
                     tag=self.get_argument('tag'),
                     count=self.get_argument('count'),
                     google_key=GOOGLE_TOKEN,
-                    ws_url='wss://{}/websocket/'.format(self.request.host))
+                    ws_url='ws{}://{}/websocket/'.format(
+                        '' if '127.0.0.1' in self.request.host else 's',
+                        self.request.host))
 
 
 class WSHandler(tornado.websocket.WebSocketHandler):
