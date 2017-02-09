@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/map.css">
+{% end %}
+
+{% block bottom %}
+<script src="/static/js/map.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{google_key}}&callback=initMap">
+</script>
+{% end %}
+
+{% block footer %} <p id="footer">0 of {{ count }}</p>  {% end %}
+
+{% block body %}
+<div id="ws_url" class="hidden">{{ws_url}}</div>
+<div id="tag" class="hidden">{{tag}}</div>
+<div id="count" class="hidden">{{count}}</div>
+
+<div id="pic_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{ tag }}</h4>
+            </div>
+            <div class="modal-body" id="modal_body"></div>
+        </div>
+    </div>
+</div>
+
+<h1 class="cover-heading">#{{ tag }}</h1>
+<div id="map"></div>
+{% end %}
+
